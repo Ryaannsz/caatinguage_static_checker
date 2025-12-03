@@ -1,4 +1,4 @@
-# lexer/lexer.py
+
 
 from typing import Optional
 from config.reserved import Token, TokenType, RESERVED_WORDS, SYMBOLS

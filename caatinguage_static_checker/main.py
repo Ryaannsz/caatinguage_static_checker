@@ -1,4 +1,4 @@
-# main.py
+
 
 from pathlib import Path
 from lexer.lexer import Lexer

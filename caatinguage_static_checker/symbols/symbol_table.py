@@ -1,4 +1,4 @@
-# symbols/symbol_table.py
+
 
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional
