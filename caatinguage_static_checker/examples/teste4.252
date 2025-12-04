@@ -1,0 +1,26 @@
+program TesteTruncagem
+
+declarations
+    integer identificador_muito_muito_muito_grande_1;
+    integer identificador_muito_muito_muito_grande_2;
+    integer identificador_muito_muito_muito_grande_3;
+enddeclarations
+
+functions
+
+function void main()
+{
+    identificador_muito_muito_muito_grande_1 := 1;
+    identificador_muito_muito_muito_grande_2 := 2;
+    identificador_muito_muito_muito_grande_3 := 
+        identificador_muito_muito_muito_grande_1
+        + identificador_muito_muito_muito_grande_2;
+
+    print identificador_muito_muito_muito_grande_3;
+    return;
+}
+endfunction
+
+endfunctions
+
+endprogram

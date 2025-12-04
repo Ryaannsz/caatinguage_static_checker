@@ -1,0 +1,10 @@
+TABELA DE SÍMBOLOS - teste2.252
+Idx	Lexeme	CodAtomo	LenAntes	LenDepois	TipoSimbolo	Linhas
+1	meuprograma	IDENT	11	11		1
+2	x	IDENT	1	1		4,13,17,21,26
+3	y	IDENT	1	1		5,14,18
+4	msg	IDENT	3	3		6,15,19
+5	function	IDENT	8	8		11
+6	main	IDENT	4	4		11
+7	then	IDENT	4	4		22
+8	do	IDENT	2	2		27

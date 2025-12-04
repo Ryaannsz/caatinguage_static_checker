@@ -1,0 +1,8 @@
+TABELA DE SÍMBOLOS - teste6.252
+Idx	Lexeme	CodAtomo	LenAntes	LenDepois	TipoSimbolo	Linhas
+1	erroslexicos	IDENT	12	12		1
+2	s1	IDENT	2	2		4,14
+3	s2	IDENT	2	2		5,23
+4	ch1	IDENT	3	3		6,17,20
+5	function	IDENT	8	8		11
+6	main	IDENT	4	4		11

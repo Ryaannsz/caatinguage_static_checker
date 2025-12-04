@@ -1,0 +1,37 @@
+program TesteComentarios
+
+// este programa testa comentarios
+
+declarations
+    integer x;   // comentario na mesma linha da declaracao
+    integer y;
+enddeclarations
+
+functions
+
+/* 
+   Comentario de bloco
+   atraves de 
+   varias linhas
+*/
+
+function void main()
+{
+    x := 10;  // depois desse token, até o fim da linha é comentario
+    y := 20;
+
+    /* comentario de bloco antes de um print */
+    print x + y;
+
+    /* comentario com simbolos:
+       + - * / := == != < <= > >= # ( ) { } [ ] ;
+       nada disso deve virar token
+    */
+
+    return;
+}
+endfunction
+
+endfunctions
+
+endprogram

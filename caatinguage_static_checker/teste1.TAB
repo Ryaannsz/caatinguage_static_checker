@@ -1,10 +1,9 @@
 TABELA DE SÍMBOLOS - teste1.252
-Idx	Lexeme	TipoAtom	LenAntes	LenDepois	Linhas
-1	teste	IDENT	5	5	1
-2	var	IDENT	3	3	3
-3	x	IDENT	1	1	4,6,7
-4	y	IDENT	1	1	4,7
-5	integer	IDENT	7	7	4
-6	begin	IDENT	5	5	5
-7	zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz	IDENT	38	35	9
-8	end	IDENT	3	3	10
+Idx	Lexeme	CodAtomo	LenAntes	LenDepois	TipoSimbolo	Linhas
+1	teste	IDENT	5	5		1
+2	var	IDENT	3	3		3
+3	x	IDENT	1	1		4,6,7
+4	y	IDENT	1	1		4,7
+5	begin	IDENT	5	5		5
+6	zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz	IDENT	38	35		9
+7	end	IDENT	3	3		10
