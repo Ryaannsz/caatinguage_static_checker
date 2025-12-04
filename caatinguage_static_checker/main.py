@@ -8,38 +8,117 @@ from config.reserved import TokenType
 
 def gerar_arquivo_LEX(base_name: str, tokens):
     lex_path = Path(f"{base_name}.LEX")
+
+    # monta linhas (ignorando EOF se você quiser)
+    rows = []
+    for t in tokens:
+        if t.type == TokenType.EOF:
+            continue
+        linha = str(t.line)
+        cod_atomo = t.type.name  # se depois quiser, troca por tabela de códigos
+        lexeme = t.lexeme
+        idx = str(t.symbol_index if t.symbol_index is not None else 0)
+        rows.append((linha, cod_atomo, lexeme, idx))
+
+    # cabeçalhos
+    headers = ("Linha", "CodAtomo", "Lexeme", "IdxTS")
+
+    # calcula larguras das colunas
+    col_widths = []
+    for i in range(len(headers)):
+        max_data = max((len(row[i]) for row in rows), default=0)
+        col_widths.append(max(len(headers[i]), max_data))
+
     with lex_path.open("w", encoding="utf-8") as f:
         f.write(f"RELATÓRIO LÉXICO - {base_name}.252\n")
-        f.write("Linha\tCodAtomo\tLexeme\tIdxTS\n")
 
-        for t in tokens:
-            # se não quiser listar EOF, pule
-            if t.type == TokenType.EOF:
-                continue
+        # escreve cabeçalho alinhado
+        header_line = (
+            f"{headers[0]:<{col_widths[0]}}  "
+            f"{headers[1]:<{col_widths[1]}}  "
+            f"{headers[2]:<{col_widths[2]}}  "
+            f"{headers[3]:<{col_widths[3]}}\n"
+        )
+        f.write(header_line)
 
-            idx = t.symbol_index if t.symbol_index is not None else 0
+        # linha separadora
+        sep_line = (
+            f"{'-' * col_widths[0]}  "
+            f"{'-' * col_widths[1]}  "
+            f"{'-' * col_widths[2]}  "
+            f"{'-' * col_widths[3]}\n"
+        )
+        f.write(sep_line)
 
-            # TODO: se o professor deu tabela de códigos, usar essa tabela aqui
-            cod_atomo = t.type.name  # placeholder; depois troca por ATOM_CODES[t.type]
-
-            f.write(f"{t.line}\t{cod_atomo}\t{t.lexeme}\t{idx}\n")
+        # linhas de dados
+        for linha, cod_atomo, lexeme, idx in rows:
+            f.write(
+                f"{linha:<{col_widths[0]}}  "
+                f"{cod_atomo:<{col_widths[1]}}  "
+                f"{lexeme:<{col_widths[2]}}  "
+                f"{idx:<{col_widths[3]}}\n"
+            )
 
 def gerar_arquivo_TAB(base_name: str, symbol_table: SymbolTable):
     tab_path = Path(f"{base_name}.TAB")
+
+    rows = []
+    for entry in symbol_table.all_entries():
+        idx = str(entry.index)
+        lexeme = entry.lexeme
+        cod_atomo = entry.atom_type.name  # ou map pra código curto
+        len_antes = str(entry.len_before_trunc)
+        len_depois = str(entry.len_after_trunc)
+        tipo_simbolo = entry.symbol_type or ""  # IN, RE, ST, etc, quando tiver
+        linhas = ", ".join(str(l) for l in entry.lines)
+
+        rows.append((idx, lexeme, cod_atomo, len_antes, len_depois, tipo_simbolo, linhas))
+
+    headers = ("Idx", "Lexeme", "CodAtomo", "LenAntes", "LenDepois", "TipoSimbolo", "Linhas")
+
+    # calcula larguras
+    col_widths = []
+    for i in range(len(headers)):
+        max_data = max((len(row[i]) for row in rows), default=0)
+        col_widths.append(max(len(headers[i]), max_data))
+
     with tab_path.open("w", encoding="utf-8") as f:
         f.write(f"TABELA DE SÍMBOLOS - {base_name}.252\n")
-        f.write("Idx\tLexeme\tCodAtomo\tLenAntes\tLenDepois\tTipoSimbolo\tLinhas\n")
 
-        for entry in symbol_table.all_entries():
-            linhas = ",".join(str(l) for l in entry.lines)
+        # cabeçalho
+        header_line = (
+            f"{headers[0]:<{col_widths[0]}}  "
+            f"{headers[1]:<{col_widths[1]}}  "
+            f"{headers[2]:<{col_widths[2]}}  "
+            f"{headers[3]:<{col_widths[3]}}  "
+            f"{headers[4]:<{col_widths[4]}}  "
+            f"{headers[5]:<{col_widths[5]}}  "
+            f"{headers[6]:<{col_widths[6]}}\n"
+        )
+        f.write(header_line)
 
-            cod_atomo = entry.atom_type.name  # ou usar um map, tipo ATOM_CODES[entry.atom_type]
-            tipo_simbolo = entry.symbol_type or ""  # IN, RE, ST, CH, BL, VD...
+        # separador
+        sep_line = (
+            f"{'-' * col_widths[0]}  "
+            f"{'-' * col_widths[1]}  "
+            f"{'-' * col_widths[2]}  "
+            f"{'-' * col_widths[3]}  "
+            f"{'-' * col_widths[4]}  "
+            f"{'-' * col_widths[5]}  "
+            f"{'-' * col_widths[6]}\n"
+        )
+        f.write(sep_line)
 
+        # dados
+        for row in rows:
             f.write(
-                f"{entry.index}\t{entry.lexeme}\t{cod_atomo}\t"
-                f"{entry.len_before_trunc}\t{entry.len_after_trunc}\t"
-                f"{tipo_simbolo}\t{linhas}\n"
+                f"{row[0]:<{col_widths[0]}}  "
+                f"{row[1]:<{col_widths[1]}}  "
+                f"{row[2]:<{col_widths[2]}}  "
+                f"{row[3]:<{col_widths[3]}}  "
+                f"{row[4]:<{col_widths[4]}}  "
+                f"{row[5]:<{col_widths[5]}}  "
+                f"{row[6]:<{col_widths[6]}}\n"
             )
 
 

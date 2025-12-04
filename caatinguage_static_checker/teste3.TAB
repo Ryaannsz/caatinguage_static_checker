@@ -1,21 +1,22 @@
 TABELA DE SÍMBOLOS - teste3.252
-Idx	Lexeme	CodAtomo	LenAntes	LenDepois	TipoSimbolo	Linhas
-1	testetokens	IDENT	11	11		1
-2	a	IDENT	1	1		4,24,37,39,56
-3	b	IDENT	1	1		4,25,37,39,57
-4	c	IDENT	1	1		4,26,39,40,45
-5	r1	IDENT	2	2		5,28,37,58
-6	r2	IDENT	2	2		5,29,37,59
-7	s1	IDENT	2	2		6,31
-8	s2	IDENT	2	2		6,32
-9	flag	IDENT	4	4		7,34
-10	ch	IDENT	2	2		8,35
-11	function	IDENT	8	8		13,22
-12	soma	IDENT	4	4		13,39
-13	x	IDENT	1	1		13,16
-14	y	IDENT	1	1		13,16
-15	resultado	IDENT	9	9		15,16,17
-16	main	IDENT	4	4		22
-17	and	IDENT	3	3		37
-18	then	IDENT	4	4		38,50,63,68
-19	do	IDENT	2	2		46
+Idx  Lexeme       CodAtomo  LenAntes  LenDepois  TipoSimbolo  Linhas           
+---  -----------  --------  --------  ---------  -----------  -----------------
+1    testetokens  IDENT     11        11                      1                
+2    a            IDENT     1         1                       4, 24, 37, 39, 56
+3    b            IDENT     1         1                       4, 25, 37, 39, 57
+4    c            IDENT     1         1                       4, 26, 39, 40, 45
+5    r1           IDENT     2         2                       5, 28, 37, 58    
+6    r2           IDENT     2         2                       5, 29, 37, 59    
+7    s1           IDENT     2         2                       6, 31            
+8    s2           IDENT     2         2                       6, 32            
+9    flag         IDENT     4         4                       7, 34            
+10   ch           IDENT     2         2                       8, 35            
+11   function     IDENT     8         8                       13, 22           
+12   soma         IDENT     4         4                       13, 39           
+13   x            IDENT     1         1                       13, 16           
+14   y            IDENT     1         1                       13, 16           
+15   resultado    IDENT     9         9                       15, 16, 17       
+16   main         IDENT     4         4                       22               
+17   and          IDENT     3         3                       37               
+18   then         IDENT     4         4                       38, 50, 63, 68   
+19   do           IDENT     2         2                       46               

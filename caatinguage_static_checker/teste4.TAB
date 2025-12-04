@@ -1,6 +1,7 @@
 TABELA DE SÍMBOLOS - teste4.252
-Idx	Lexeme	CodAtomo	LenAntes	LenDepois	TipoSimbolo	Linhas
-1	testetruncagem	IDENT	14	14		1
-2	identificador_muito_muito_muito_gra	IDENT	40	35		4,5,6,13,14
-3	function	IDENT	8	8		11
-4	main	IDENT	4	4		11
+Idx  Lexeme                               CodAtomo  LenAntes  LenDepois  TipoSimbolo  Linhas         
+---  -----------------------------------  --------  --------  ---------  -----------  ---------------
+1    testetruncagem                       IDENT     14        14                      1              
+2    identificador_muito_muito_muito_gra  IDENT     40        35                      4, 5, 6, 13, 14
+3    function                             IDENT     8         8                       11             
+4    main                                 IDENT     4         4                       11             
