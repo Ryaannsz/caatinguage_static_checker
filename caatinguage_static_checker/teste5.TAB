@@ -1,8 +1,0 @@
-TABELA DE SÍMBOLOS - teste5.252
-Idx  Lexeme            CodAtomo  LenAntes  LenDepois  TipoSimbolo  Linhas   
----  ----------------  --------  --------  ---------  -----------  ---------
-1    testecomentarios  IDENT     16        16                      1        
-2    x                 IDENT     1         1                       6, 20, 24
-3    y                 IDENT     1         1                       7, 21, 24
-4    function          IDENT     8         8                       18       
-5    main              IDENT     4         4                       18       

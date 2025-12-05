@@ -1,13 +1,14 @@
-program progErr1
+program progErr3
 declarations
-    varType integer : x;
+    varType integer : a;
+    varType boolean : b;
 endDeclarations
 
 functions
     funcType integer : f(paramType integer : p)
         {
-            y := x + p;
-            return y;
+            a := p + b;
+            return a;
         }
 endFunctions
 

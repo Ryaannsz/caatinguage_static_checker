@@ -1,38 +1,7 @@
-program MeuPrograma
-
+program prog2
 declarations
-    integer x;
-    real y;
-    string msg;
-enddeclarations
-
-functions
-
-function void main()
-{
-    x := 10;
-    y := 3.14;
-    msg := "hello world";
-
-    print x;
-    print y;
-    print msg;
-
-    if x > 5
-    then
-        print "x maior que 5";
-    endif
-
-    while x > 0
-    do
-        print x;
-        x := x - 1;
-    endwhile
-
-    return;
-}
-endfunction
-
-endfunctions
-
-endprogram
+    varType integer : x, y;
+    varType real    : r1;
+    varType boolean : flag;
+endDeclarations
+endProgram

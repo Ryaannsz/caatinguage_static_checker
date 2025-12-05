@@ -1,26 +1,13 @@
-program TesteTruncagem
-
+program prog4
 declarations
-    integer identificador_muito_muito_muito_grande_1;
-    integer identificador_muito_muito_muito_grande_2;
-    integer identificador_muito_muito_muito_grande_3;
-enddeclarations
+    varType integer : g;
+endDeclarations
 
 functions
+    funcType integer : soma(paramType integer : a, b)
+        {
+            return a + b;
+        }
+endFunctions
 
-function void main()
-{
-    identificador_muito_muito_muito_grande_1 := 1;
-    identificador_muito_muito_muito_grande_2 := 2;
-    identificador_muito_muito_muito_grande_3 := 
-        identificador_muito_muito_muito_grande_1
-        + identificador_muito_muito_muito_grande_2;
-
-    print identificador_muito_muito_muito_grande_3;
-    return;
-}
-endfunction
-
-endfunctions
-
-endprogram
+endProgram

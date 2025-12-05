@@ -1,32 +1,6 @@
-program ErrosLexicos
-
+program progErr2
 declarations
-    string s1;
-    string s2;
-    character ch1;
-enddeclarations
-
-functions
-
-function void main()
-{
-    // string nao fechada (falta aspa final)
-    s1 := "isto eh uma string sem fim
-
-    // char vazio
-    ch1 := '';
-
-    // char com mais de um caractere
-    ch1 := 'AB';
-
-    // simbolo desconhecido @
-    s2 := "ok";
-    @@@
-
-    return;
-}
-endfunction
-
-endfunctions
-
-endprogram
+    varType integer : x, y;
+    varType real    : x;
+endDeclarations
+endProgram

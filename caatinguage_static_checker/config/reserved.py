@@ -1,127 +1,153 @@
-from enum import Enum, auto
+# config/reserved.py
+from enum import Enum
 from dataclasses import dataclass
 from typing import Optional
 
 
+# ============================================================
+# ENUM DE TIPOS DE TOKENS
+# ============================================================
+
 class TokenType(Enum):
-    # Palavras reservadas (tipos)
-    INTEGER = auto()
-    REAL = auto()
-    STRING = auto()
-    BOOLEAN = auto()
-    CHARACTER = auto()
-    VOID = auto()
 
-    TRUE = auto()
-    FALSE = auto()
+    # -----------------------------
+    # PALAVRAS RESERVADAS
+    # -----------------------------
+    INTEGER = "PRS01"
+    REAL = "PRS02"
+    CHARACTER = "PRS03"
+    STRING = "PRS04"
+    BOOLEAN = "PRS05"
+    VOID = "PRS06"
+    TRUE = "PRS07"
+    FALSE = "PRS08"
+    VARTYPE = "PRS09"
+    FUNCTYPE = "PRS10"
+    PARAMTYPE = "PRS11"
+    DECLARATIONS = "PRS12"
+    ENDDECLARATIONS = "PRS13"
 
-    # Estrutura do programa
-    PROGRAM = auto()
-    END_PROGRAM = auto()
-    DECLARATIONS = auto()
-    END_DECLARATIONS = auto()
-    FUNCTIONS = auto()
-    END_FUNCTIONS = auto()
-    END_FUNCTION = auto()   # para fechar cada função
+    PROGRAM = "PRS14"
+    ENDFUNCTIONS = "PRS15"
+    FUNCTIONS = "PRS16"
+    RETURN = "PRS17"
+    IF = "PRS18"
+    ELSE = "PRS19"
+    ENDIF = "PRS20"
+    WHILE = "PRS21"
+    ENDWHILE = "PRS22"
+    BREAK = "PRS23"
+    ENDPROGRAM = "PRS24"
+    ENDFUNCTION = "PRS25"
+    PRINT = "PRS26"
+    
 
-    # “Meta” palavras da gramática
-    VARTYPE = auto()
-    FUNCTYPE = auto()
-    PARAMTYPE = auto()
+    # -----------------------------
+    # SÍMBOLOS RESERVADOS
+    # -----------------------------
+    SEMICOLON = "SRS01"          # ;
+    COMMA = "SRS02"              # ,
+    COLON = "SRS03"              # :
+    ASSIGN = "SRS04"             # =
+    QUESTIONMARK = "SRS05"       # ?
+    LPAREN = "SRS06"             # (
+    RPAREN = "SRS07"             # )
+    LBRACKET = "SRS08"           # [
+    RBRACKET = "SRS09"           # ]
+    LBRACE = "SRS10"             # {
+    RBRACE = "SRS11"             # }
 
-    # Controle de fluxo
-    IF = auto()
-    ELSE = auto()
-    END_IF = auto()
-    WHILE = auto()
-    END_WHILE = auto()
-    RETURN = auto()
-    BREAK = auto()
-    PRINT = auto()
+    PLUS = "SRS12"
+    MINUS = "SRS13"
+    MULT = "SRS14"
+    DIV = "SRS15"
+    MOD = "SRS16"
+    EQCMP = "SRS17"              # ==
+    NOTEQUAL = "SRS18"           # !=
+    HASHNOT = "SRS18"            # "#" também como notEqual
+    LESSTHAN = "SRS19"
+    LESSEQ = "SRS20"
+    GREATERTHAN = "SRS21"
+    GREATEREQ = "SRS22"
 
-    # Identificadores / constantes
-    IDENT = auto()          # programName, variable, functionName...
-    INT_CONST = auto()
-    REAL_CONST = auto()
-    STRING_CONST = auto()
-    CHAR_CONST = auto()
+    # -----------------------------
+    # IDENTIFICADORES (classes)
+    # -----------------------------
+    PROGRAMNAME = "IDN01"
+    VARIABLE = "IDN02"
+    FUNCTIONNAME = "IDN03"
+    INTCONST = "IDN04"
+    REALCONST = "IDN05"
+    STRINGCONST = "IDN06"
+    CHARCONST = "IDN07"
 
-    # Símbolos / operadores
-    PLUS = auto()
-    MINUS = auto()
-    MUL = auto()
-    DIV = auto()
-    MOD = auto()            # %
+    # -----------------------------
+    # SUBMÁQUINAS
+    # -----------------------------
+    SUBMACHINE1 = "SUB01"
+    SUBMACHINE2 = "SUB02"
+    SUBMACHINE3 = "SUB03"
+    SUBMACHINEN = "SUBN"
 
-    ASSIGN = auto()         # :=
-    EQ = auto()             # ==
-    NEQ = auto()            # !=
-    NEQ_HASH = auto()       # #  (se quiser separar)
-    LT = auto()
-    LE = auto()
-    GT = auto()
-    GE = auto()
-
-    LPAREN = auto()         # (
-    RPAREN = auto()         # )
-    LBRACKET = auto()       # [
-    RBRACKET = auto()       # ]
-    LBRACE = auto()         # {
-    RBRACE = auto()         # }
-
-    SEMICOLON = auto()      # ;
-    COLON = auto()          # :
-    COMMA = auto()          # ,
-    QUESTION = auto()       # ?
-
-    EOF = auto()
-    UNKNOWN = auto()
+    # -----------------------------
+    # ESPECIAIS
+    # -----------------------------
+    IDENT = "IDENT"
+    EOF = "EOF"
+    UNKNOWN = "UNKNOWN"
 
 
+# ============================================================
+# TOKEN PADRÃO
+# ============================================================
 
-# mapa de palavras reservadas para TokenType
+# ============================================================
+# MAPA DE PALAVRAS RESERVADAS
+# ============================================================
+
 RESERVED_WORDS = {
-    "program": TokenType.PROGRAM,
-    "endprogram": TokenType.END_PROGRAM,
-    "declarations": TokenType.DECLARATIONS,
-    "enddeclarations": TokenType.END_DECLARATIONS,
-    "functions": TokenType.FUNCTIONS,
-    "endfunctions": TokenType.END_FUNCTIONS,
-    "endfunction": TokenType.END_FUNCTION,
-
     "integer": TokenType.INTEGER,
     "real": TokenType.REAL,
+    "character": TokenType.CHARACTER,
     "string": TokenType.STRING,
     "boolean": TokenType.BOOLEAN,
-    "character": TokenType.CHARACTER,
     "void": TokenType.VOID,
-
     "true": TokenType.TRUE,
     "false": TokenType.FALSE,
+    "varType": TokenType.VARTYPE,
+    "funcType": TokenType.FUNCTYPE,
+    "paramType": TokenType.PARAMTYPE,
+    "declarations": TokenType.DECLARATIONS,
+    "endDeclarations": TokenType.ENDDECLARATIONS,
 
-    "vartype": TokenType.VARTYPE,
-    "functype": TokenType.FUNCTYPE,
-    "paramtype": TokenType.PARAMTYPE,
+    "program": TokenType.PROGRAM,
+    "functions": TokenType.FUNCTIONS,
+    "endFunctions": TokenType.ENDFUNCTIONS,
+    "endProgram": TokenType.ENDPROGRAM,
+    "endFunction": TokenType.ENDFUNCTION,  
 
-    "if": TokenType.IF,
-    "endif": TokenType.END_IF,
-    "else": TokenType.ELSE,
-    "while": TokenType.WHILE,
-    "endwhile": TokenType.END_WHILE,
     "return": TokenType.RETURN,
+    "if": TokenType.IF,
+    "else": TokenType.ELSE,
+    "endif": TokenType.ENDIF,
+    "while": TokenType.WHILE,
+    "endWhile": TokenType.ENDWHILE,
     "break": TokenType.BREAK,
     "print": TokenType.PRINT,
 }
 
 
-# mapa de símbolos simples/múltiplos chars
-SYMBOLS = {
-    "+": TokenType.PLUS,
-    "-": TokenType.MINUS,
-    "*": TokenType.MUL,
-    "/": TokenType.DIV,
-    "%": TokenType.MOD,
+# ============================================================
+# MAPA DE SÍMBOLOS RESERVADOS
+# ============================================================
 
+SYMBOLS = {
+    ";": TokenType.SEMICOLON,
+    ",": TokenType.COMMA,
+    ":": TokenType.COLON,
+    ":=": TokenType.ASSIGN,    
+
+    "?": TokenType.QUESTIONMARK,
     "(": TokenType.LPAREN,
     ")": TokenType.RPAREN,
     "[": TokenType.LBRACKET,
@@ -129,20 +155,22 @@ SYMBOLS = {
     "{": TokenType.LBRACE,
     "}": TokenType.RBRACE,
 
-    ";": TokenType.SEMICOLON,
-    ":": TokenType.COLON,
-    ",": TokenType.COMMA,
-    "?": TokenType.QUESTION,
+    "+": TokenType.PLUS,
+    "-": TokenType.MINUS,
+    "*": TokenType.MULT,
+    "/": TokenType.DIV,
+    "%": TokenType.MOD,
 
-    ":=": TokenType.ASSIGN,
-    "<=": TokenType.LE,
-    "<": TokenType.LT,
-    ">=": TokenType.GE,
-    ">": TokenType.GT,
-    "==": TokenType.EQ,
-    "!=": TokenType.NEQ,
-    "#": TokenType.NEQ_HASH,
+    "==": TokenType.EQCMP,
+    "!=": TokenType.NOTEQUAL,
+    "#": TokenType.NOTEQUAL,  
+
+    "<": TokenType.LESSTHAN,
+    "<=": TokenType.LESSEQ,
+    ">": TokenType.GREATERTHAN,
+    ">=": TokenType.GREATEREQ,
 }
+
 
 
 @dataclass
@@ -150,4 +178,4 @@ class Token:
     type: TokenType
     lexeme: str
     line: int
-    symbol_index: Optional[int] = None  # índice na tabela de símbolos (se for IDENT)
+    symbol_index: Optional[int] = None  # índice da tabela de símbolos

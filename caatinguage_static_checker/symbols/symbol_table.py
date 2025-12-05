@@ -1,9 +1,8 @@
-
+# symbols/symbol_table.py
 
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional
 from config.reserved import TokenType
-
 
 MAX_LINES_PER_SYMBOL = 5
 
@@ -15,11 +14,12 @@ class SymbolEntry:
     atom_type: TokenType
     len_before_trunc: int
     len_after_trunc: int
-    symbol_type: Optional[str] = None  
+    symbol_type: Optional[str] = None  # FP, IN, etc – para o checker depois
     lines: List[int] = field(default_factory=list)
 
     def add_line(self, line: int) -> None:
-        if line not in self.lines and len(self.lines) < MAX_LINES_PER_SYMBOL:
+        """Registra a linha SEM remover repetições."""
+        if len(self.lines) < MAX_LINES_PER_SYMBOL:
             self.lines.append(line)
 
 
@@ -27,7 +27,7 @@ class SymbolTable:
     def __init__(self, max_lexeme_len: int = 35):
         self._symbols: Dict[str, SymbolEntry] = {}
         self._max_lexeme_len = max_lexeme_len
-        self._next_index = 1  # começa em 1, por exemplo
+        self._next_index = 1  # começa em 1
 
     def get_or_create(self, lexeme: str, line: int) -> SymbolEntry:
         len_before = len(lexeme)
@@ -42,7 +42,7 @@ class SymbolTable:
         entry = SymbolEntry(
             index=self._next_index,
             lexeme=truncated,
-            atom_type=TokenType.IDENT,
+            atom_type=TokenType.VARIABLE,  
             len_before_trunc=len_before,
             len_after_trunc=len_after,
         )
@@ -52,5 +52,4 @@ class SymbolTable:
         return entry
 
     def all_entries(self) -> List[SymbolEntry]:
-        # retorna ordenado por index
         return sorted(self._symbols.values(), key=lambda e: e.index)

@@ -1,10 +1,4 @@
-program teste;
-
-var
-  x, y: integer;
-begin
-  x := 10;
-  y := x + 20;
-// comentário de linha
-  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz := 5;
-end.
+program prog1
+declarations
+endDeclarations
+endProgram

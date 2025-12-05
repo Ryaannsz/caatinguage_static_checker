@@ -1,0 +1,14 @@
+program progErr4
+declarations
+    varType integer : v[10], i;
+    varType real    : r;
+endDeclarations
+
+functions
+    funcType void : f(paramType integer : p)
+        {
+            v[r] := p;   // r é real, índice inválido
+        }
+endFunctions
+
+endProgram
