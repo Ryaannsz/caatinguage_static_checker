@@ -174,7 +174,7 @@ def main():
     print("2 - Testar todos os arquivos .252 da pasta 'examples'")
     choice = input("Opção (1/2): ").strip()
 
-    # ---------------- MODO 2: todos os arquivos ----------------
+    # MODO 2: todos os arquivos 
     if choice == "2":
         if not examples_dir.exists():
             print("Pasta 'examples' não encontrada.")
@@ -192,7 +192,7 @@ def main():
         print("\nProcessamento de todos os testes concluído.")
         return
 
-    # ---------------- MODO 1: arquivo único ----------------
+    # MODO 1: arquivo único 
     base_name = input("Digite o nome base do programa (sem .252): ").strip()
     source_path = examples_dir / f"{base_name}.252"
 

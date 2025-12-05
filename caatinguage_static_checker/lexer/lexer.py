@@ -13,7 +13,7 @@ class Lexer:
         self.line = 1
         self.max_lexeme_len = max_lexeme_len
 
-    # utilidades básicas ----------------------------------
+    # utilidades básicas
 
     def _peek(self, offset: int = 0) -> Optional[str]:
         idx = self.pos + offset
@@ -30,7 +30,7 @@ class Lexer:
             self.line += 1
         return ch
 
-    # espaços e comentários -------------------------------
+    # espaços e comentários
 
     def _skip_whitespace_and_comments(self):
         while True:
@@ -43,7 +43,7 @@ class Lexer:
                 self._advance()
                 continue
 
-            # // comentário de linha
+            # comentário de linha
             if ch == "/" and self._peek(1) == "/":
                 self._advance()  # /
                 self._advance()  # /
@@ -51,7 +51,7 @@ class Lexer:
                     self._advance()
                 continue
 
-            # /* comentário de bloco */
+            # comentário de bloco 
             if ch == "/" and self._peek(1) == "*":
                 self._advance()  # /
                 self._advance()  # *
@@ -67,7 +67,7 @@ class Lexer:
 
             break  # não é espaço/comentário
 
-    # token principal -------------------------------------
+    # token principal 
 
     def next_token(self) -> Token:
         self._skip_whitespace_and_comments()
@@ -76,7 +76,7 @@ class Lexer:
         if ch is None:
             return Token(TokenType.EOF, "", self.line)
 
-        # IDENT ou PALAVRA RESERVADA ----------------------
+        # IDENT ou PALAVRA RESERVADA 
         if ch.isalpha() or ch == "_":
             start_line = self.line
             lex = []
@@ -97,7 +97,7 @@ class Lexer:
             # lexeme exibido = o truncado salvo
             return Token(TokenType.IDENT, entry.lexeme, start_line, symbol_index=entry.index)
 
-        # NÚMEROS -----------------------------------------
+        # NÚMEROS 
         if ch.isdigit():
             start_line = self.line
             lex = []
@@ -123,10 +123,10 @@ class Lexer:
             else:
                 return Token(TokenType.INTCONST, truncated, start_line)
 
-        # STRING ------------------------------------------
+        # STRING 
         if ch == '"':
             start_line = self.line
-            self._advance()  # abre "
+            self._advance()  # abre
             lex = []
             while True:
                 ch2 = self._peek()
@@ -141,7 +141,7 @@ class Lexer:
             truncated = full_lex[: self.max_lexeme_len]
             return Token(TokenType.STRINGCONST, truncated, start_line)
 
-        # CHAR (simplificado) -----------------------------
+        # CHAR (simplificado) 
         if ch == "'":
             start_line = self.line
             self._advance()  # '
@@ -151,7 +151,7 @@ class Lexer:
             truncated = lex[: self.max_lexeme_len]
             return Token(TokenType.CHARCONST, truncated, start_line)
 
-        # SÍMBOLOS (tenta 2 chars primeiro) ---------------
+        # SÍMBOLOS (tenta 2 chars primeiro) 
         start_line = self.line
         two = (ch or "") + (self._peek(1) or "")
         if two in SYMBOLS:
@@ -163,6 +163,6 @@ class Lexer:
             self._advance()
             return Token(SYMBOLS[ch], ch, start_line)
 
-        # DESCONHECIDO ------------------------------------
+        # DESCONHECIDO 
         self._advance()
         return Token(TokenType.UNKNOWN, ch, self.line)

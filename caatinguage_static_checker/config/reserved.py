@@ -3,16 +3,12 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Optional
 
-
-# ============================================================
 # ENUM DE TIPOS DE TOKENS
-# ============================================================
 
 class TokenType(Enum):
 
-    # -----------------------------
     # PALAVRAS RESERVADAS
-    # -----------------------------
+    
     INTEGER = "PRS01"
     REAL = "PRS02"
     CHARACTER = "PRS03"
@@ -41,10 +37,8 @@ class TokenType(Enum):
     ENDFUNCTION = "PRS25"
     PRINT = "PRS26"
     
-
-    # -----------------------------
     # SÍMBOLOS RESERVADOS
-    # -----------------------------
+    
     SEMICOLON = "SRS01"          # ;
     COMMA = "SRS02"              # ,
     COLON = "SRS03"              # :
@@ -70,9 +64,8 @@ class TokenType(Enum):
     GREATERTHAN = "SRS21"
     GREATEREQ = "SRS22"
 
-    # -----------------------------
     # IDENTIFICADORES (classes)
-    # -----------------------------
+
     PROGRAMNAME = "IDN01"
     VARIABLE = "IDN02"
     FUNCTIONNAME = "IDN03"
@@ -81,29 +74,22 @@ class TokenType(Enum):
     STRINGCONST = "IDN06"
     CHARCONST = "IDN07"
 
-    # -----------------------------
     # SUBMÁQUINAS
-    # -----------------------------
+
     SUBMACHINE1 = "SUB01"
     SUBMACHINE2 = "SUB02"
     SUBMACHINE3 = "SUB03"
     SUBMACHINEN = "SUBN"
 
-    # -----------------------------
     # ESPECIAIS
-    # -----------------------------
+    
     IDENT = "IDENT"
     EOF = "EOF"
     UNKNOWN = "UNKNOWN"
 
-
-# ============================================================
 # TOKEN PADRÃO
-# ============================================================
 
-# ============================================================
 # MAPA DE PALAVRAS RESERVADAS
-# ============================================================
 
 RESERVED_WORDS = {
     "integer": TokenType.INTEGER,
@@ -136,10 +122,7 @@ RESERVED_WORDS = {
     "print": TokenType.PRINT,
 }
 
-
-# ============================================================
 # MAPA DE SÍMBOLOS RESERVADOS
-# ============================================================
 
 SYMBOLS = {
     ";": TokenType.SEMICOLON,
@@ -170,8 +153,6 @@ SYMBOLS = {
     ">": TokenType.GREATERTHAN,
     ">=": TokenType.GREATEREQ,
 }
-
-
 
 @dataclass
 class Token:

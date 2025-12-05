@@ -16,9 +16,7 @@ class Parser:
         self.errors: List[str] = []
         self.current_function: Optional[str] = None
 
-    # -----------------------------------------------------
     # utilitários básicos
-    # -----------------------------------------------------
 
     def _advance(self) -> None:
         self.current_token = self.lexer.next_token()
@@ -39,9 +37,7 @@ class Parser:
     def _error(self, msg: str, line: int) -> None:
         self.errors.append(f"Linha {line}: {msg}")
 
-    # -----------------------------------------------------
     # ENTRADA PRINCIPAL – FileProgram (SIMP)
-    #
     # FileProgram =
     # "program" "id"
     # "declarations"
@@ -52,7 +48,6 @@ class Parser:
     # "endDeclararions"
     # [ "functions" { func... } "endFunctions" ]
     # "endProgram" .
-    # -----------------------------------------------------
 
     def parse(self) -> None:
         self.parse_FileProgram()
@@ -91,14 +86,12 @@ class Parser:
         # "endProgram"
         self._eat(TokenType.ENDPROGRAM)
 
-    # -----------------------------------------------------
     # Bloco de declarações:
     #
     # { "varType" "typeSpec" ( ":" | "[" "]" ":" ) "id"
     #   [ "[" "intConst" "]" ]
     #   { "," "id" [ "[" "intConst" "]" ] }
     #   { ";" "varType" "typeSpec" ( ":" | "[" "]" ":" ) "id" ... } }
-    # -----------------------------------------------------
 
     def parse_VarDeclSection(self) -> None:
         # se não começar com varType, lista de declarações é vazia
@@ -174,14 +167,12 @@ class Parser:
             self._error("Esperado identificador de variável", self.current_token.line)
             self._advance()
 
-    # -----------------------------------------------------
     # Section de funções (SIMP):
     #
     # "functions"
     # { "funcType" "typeSpec" ":" "id" "(" [ "?" | ParamGroups ] ")" Command "endFunction"
     #   { ";" "funcType" ... } }
     # "endFunctions"
-    # -----------------------------------------------------
 
     def parse_FunctionSection(self) -> None:
         # se não começar com funcType, seção de funções vazia (gramática usa {}, mas vamos checar)
@@ -228,12 +219,10 @@ class Parser:
         self._eat(TokenType.ENDFUNCTION)
         self.current_function = None
 
-    # -----------------------------------------------------
     # Parâmetros:
     #
     # [ "?" | "paramType" "typeSpec" ":" "id" { "," "id" }
     #   { ";" "paramType" "typeSpec" ":" "id" { "," "id" } } ]
-    # -----------------------------------------------------
 
     def parse_ParamsOptional(self) -> None:
         if self._check(TokenType.QUESTIONMARK):
@@ -284,7 +273,6 @@ class Parser:
         entry.atom_type = TokenType.VARIABLE  # IDN02
         entry.symbol_type = self._map_tipo_lexeme_to_code(tipo_lex, False)
 
-    # -----------------------------------------------------
     # Command (SIMP):
     #
     # Command =
@@ -295,7 +283,6 @@ class Parser:
     # | "return" [ Expression ]
     # | "break"
     # | "id" [ "[" "intConst" "]" ] ( ":" | ":=" ) Expression .
-    # -----------------------------------------------------
 
     def parse_Command(self) -> None:
         t = self.current_token.type
@@ -383,7 +370,6 @@ class Parser:
         # Expression
         self.parse_Expression()
 
-    # -----------------------------------------------------
     # Expression / Term / Factor (SIMP):
     #
     # Expression =
@@ -398,7 +384,6 @@ class Parser:
     # | "intConst" | "realConst" | "stringConst" | "charConst"
     # | "true" | "false"
     # | "(" Expression ")" .
-    # -----------------------------------------------------
 
     def parse_Expression(self) -> None:
         # primeira parte: Term { (+|-) Term }
@@ -462,10 +447,8 @@ class Parser:
             self._error("Esperado fator (id, constante ou expressão)", self.current_token.line)
             self._advance()
 
-    # -----------------------------------------------------
     # TypeSpecification (não está na SIMP, mas vem da definição):
     # typeSpec → integer | real | string | boolean | character | void
-    # -----------------------------------------------------
 
     def parse_TypeSpecification(self) -> str:
         tok = self.current_token
@@ -485,9 +468,7 @@ class Parser:
             self._advance()
             return "void"
 
-    # -----------------------------------------------------
     # helpers de tipo / expressão / relop
-    # -----------------------------------------------------
 
     def _map_tipo_lexeme_to_code(self, tipo_lexeme: str, is_array: bool) -> str:
         base = (tipo_lexeme or "").lower()
