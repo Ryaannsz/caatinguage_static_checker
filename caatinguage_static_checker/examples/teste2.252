@@ -1,7 +1,0 @@
-program prog2
-declarations
-    varType integer : x, y;
-    varType real    : r1;
-    varType boolean : flag;
-endDeclarations
-endProgram

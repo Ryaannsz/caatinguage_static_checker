@@ -1,8 +1,0 @@
-TABELA DE SÍMBOLOS - teste4.252
-Idx  Lexeme  CodAtomo  LenAntes  LenDepois  TipoSimbolo  Linhas       
----  ------  --------  --------  ---------  -----------  -------------
-1    prog4   IDN01     5         5          VD           1, 1, 1      
-2    g       IDN02     1         1          IN           3, 3, 3      
-3    soma    IDN03     4         4          IN           7, 7, 7      
-4    a       IDN02     1         1          IN           7, 7, 9, 9, 7
-5    b       IDN02     1         1          IN           7, 7, 9, 9, 7

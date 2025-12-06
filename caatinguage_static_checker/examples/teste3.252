@@ -1,6 +1,0 @@
-program prog3
-declarations
-    varType integer : v[10], idx[3];
-    varType real    : vetorRealMuitoGrandeQueSeraTruncado[15];
-endDeclarations
-endProgram

@@ -1,6 +1,0 @@
-program progErr2
-declarations
-    varType integer : x, y;
-    varType real    : x;
-endDeclarations
-endProgram

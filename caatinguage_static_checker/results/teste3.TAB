@@ -1,7 +1,0 @@
-TABELA DE SÍMBOLOS - teste3.252
-Idx  Lexeme                               CodAtomo  LenAntes  LenDepois  TipoSimbolo  Linhas 
----  -----------------------------------  --------  --------  ---------  -----------  -------
-1    prog3                                IDN01     5         5          VD           1, 1, 1
-2    v                                    IDN02     1         1          AI           3, 3, 3
-3    idx                                  IDN02     3         3          AI           3, 3, 3
-4    vetorRealMuitoGrandeQueSeraTruncado  IDN02     35        35         AF           4, 4, 4

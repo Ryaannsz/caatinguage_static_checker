@@ -1,6 +1,0 @@
-TABELA DE SÍMBOLOS - teste6.252
-Idx  Lexeme    CodAtomo  LenAntes  LenDepois  TipoSimbolo  Linhas       
----  --------  --------  --------  ---------  -----------  -------------
-1    progErr2  IDN01     8         8          VD           1, 1, 1      
-2    x         IDN02     1         1          FP           3, 3, 4, 4, 3
-3    y         IDN02     1         1          IN           3, 3, 3      
