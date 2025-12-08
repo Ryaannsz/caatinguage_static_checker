@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['caatinguage_static_checker/main.py'],
+    ['caatinguage_static_checker\\main.py'],
     pathex=[],
     binaries=[],
-    datas=[('caatinguage_static_checker/examples', 'examples')],
+    datas=[('caatinguage_static_checker\\examples', 'examples')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

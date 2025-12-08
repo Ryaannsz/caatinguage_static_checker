@@ -48,6 +48,11 @@ def gerar_arquivo_LEX(base_name: str, tokens):
         col_widths.append(max(len(headers[i]), max_data))
 
     with lex_path.open("w", encoding="utf-8") as f:
+        f.write("Código da equipe: 07\n")
+        f.write("Ryan Carvalho Bernardo; ryan.bernardo@ba.estudante.senai.br; (75) 9 9117-9171\n")
+        f.write("Lucas Sampaio Serra Almeida; lucas.s.almeida@aln.senaicimatec.edu.br; (71) 9 9279-5601\n")
+        f.write("Giovanni Leão; giovanni.jesus@aln.senaicimatec.edu.br; (71) 9 9194-3397\n")
+        f.write("Ralph Barbosa; ralph.rodrigues@aln.senaicimatec.edu.br; (71) 9 9900-1831\n\n")
         f.write(f"RELATÓRIO LÉXICO - {base_name}.252\n")
 
         header_line = (
@@ -98,6 +103,11 @@ def gerar_arquivo_TAB(base_name: str, symbol_table: SymbolTable):
         col_widths.append(max(len(headers[i]), max_data))
 
     with tab_path.open("w", encoding="utf-8") as f:
+        f.write("Código da equipe: 07\n")
+        f.write("Ryan Carvalho Bernardo; ryan.bernardo@ba.estudante.senai.br; (75) 9 9117-9171\n")
+        f.write("Lucas Sampaio Serra Almeida; lucas.s.almeida@aln.senaicimatec.edu.br; (71) 9 9279-5601\n")
+        f.write("Giovanni Leão; giovanni.jesus@aln.senaicimatec.edu.br; (71) 9 9194-3397\n")
+        f.write("Ralph Barbosa; ralph.rodrigues@aln.senaicimatec.edu.br; (71) 9 9900-1831\n\n")
         f.write(f"TABELA DE SÍMBOLOS - {base_name}.252\n")
 
         header_line = (
@@ -137,8 +147,6 @@ def gerar_arquivo_TAB(base_name: str, symbol_table: SymbolTable):
 def gerar_arquivo_ERR(base_name: str, errors: list[str]):
     results_dir = get_results_dir()
     err_path = results_dir / f"{base_name}.ERR"
-    print("PATHHHHH")
-    print(err_path)
     with err_path.open("w", encoding="utf-8") as f:
         if not errors:
             f.write("Nenhum erro encontrado.\n")
